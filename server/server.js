@@ -23,8 +23,7 @@ app.get('/posts', (req, res) => {
       time: Random.datetime('yyy-MMM-ddd hh:mm:ss'),
       author: Random.cname(),
       'like|1-10001': 1
-    }))
-    posts.push(i)
+    })) 
   }
 
   // 获取当前页码 每页显示条数 计算总数页
@@ -32,7 +31,8 @@ app.get('/posts', (req, res) => {
   let currentPage = Number(req.query.currentPage ? req.query.currentPage : 1)
   let totalPage = Math.ceil(posts.length / perPageNumber)
 
-  let start = (currentPage - 1) * perPageNumber
+  let start = (currentPage - 1) * perPageNumber 
+  console.log(start,'---')
   let end = currentPage * perPageNumber <= posts.length ? currentPage * perPageNumber : posts.length
   posts = posts.slice(start, end)
 

@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import Posts from './components/Posts/Posts.js'
+import Paginations from './components/Paginations/paginations.js'
 import './App.css';
 
 const App = () => {
@@ -14,15 +16,18 @@ const App = () => {
   useEffect(() => {
     const requetposts = async () => {
       setLoading(true)
-      const response = await axios.get('http://localhost:3001/posts',{ currentPage , perPageNumber })
+      const response = await axios.get('http://localhost:3001/posts', { params: { currentPage, perPageNumber } })
       console.log(response)
       setPosts(response.data.content)
       setTotalPage(response.data.totalPage)
       setLoading(false)
     }
     requetposts()
-  },[])
+  }, [currentPage])
 
+  const requestPostsByPage = (page) => {
+    setCurrentPage(page)
+  }
 
   return (
     // <div className="App">
@@ -44,6 +49,11 @@ const App = () => {
     // </div>
     <div className="container">
       <h1 className="my-project-title">我的文章</h1>
+      <Posts loading={Loading} posts={posts} ></Posts>
+      <Paginations totalPage={totalPage}
+        requestPostsByPage={requestPostsByPage}
+        currentPage={currentPage}
+      />
     </div>
   );
 }

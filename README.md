@@ -1,3 +1,8 @@
+cd server   nodemon server.js 启动服务端
+
+yarn start 启动web端
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

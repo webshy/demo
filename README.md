@@ -1,6 +1,6 @@
-#cd server   nodemon server.js 启动服务端
+# cd server   nodemon server.js 启动服务端
 
-#yarn start 启动web端
+# yarn start 启动web端
 
 
                                                                                   华丽的分割线

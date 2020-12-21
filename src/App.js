@@ -11,7 +11,7 @@ const App = () => {
   const [Loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPage, setTotalPage] = useState(1)
-  const [perPageNumber, setPerPageNumber] = useState(10)
+  const [perPageNumber, setPerPageNumber] = useState(3)
 
   useEffect(() => {
     const requetposts = async () => {
@@ -26,6 +26,8 @@ const App = () => {
   }, [currentPage])
 
   const requestPostsByPage = (page) => {
+    if(page === '...')  return
+    if(page === 0 || page > totalPage) return
     setCurrentPage(page)
   }
 
